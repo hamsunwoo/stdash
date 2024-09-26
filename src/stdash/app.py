@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import requests
 import streamlit as st
 
-st.title('CNN JOB MON')
+st.title('Requests by Date and Time')
 
 def load_data():
     url = 'http://43.202.66.118:8077/all'
@@ -25,6 +25,7 @@ df1['request_hour'] = df1.index
 plt.bar(df1['request_hour'], df1['num'])
 plt.plot(df1['request_hour'], df1['num'], 'ro-')
 plt.xlabel('request_time')
+plt.ylabel('Number of Requests')
 plt.xticks(rotation=45,fontsize=10)
 plt.tight_layout()
 
