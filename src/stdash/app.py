@@ -63,14 +63,13 @@ with t2:
 
     plt.bar(df3['request_user'].index, df3['minute_difference'], color='blue')
     bar = plt.bar(df3['request_user'].index, df3['minute_difference'])
-    plt.rc('font', family='AppleGothic')
     
     # 값 넣는 부분
     for rect in bar:
         height = rect.get_height()
         plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.1f' % height, ha='center', va='bottom', size = 12)
 
-    plt.title('counting')
+    plt.title('unbalanced requests counting')
     plt.xlabel('request_user')
     plt.ylabel('count')
     plt.xticks(rotation=45,fontsize=10)
