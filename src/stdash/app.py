@@ -67,7 +67,7 @@ with t2:
         height = rect.get_height()
         plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.1f' % height, ha='center', va='bottom', size = 12)
 
-    plt.title('불균형 처리된 유저 카운팅')
+    plt.title('counting')
     plt.xlabel('request_user')
     plt.ylabel('count')
     plt.xticks(rotation=45,fontsize=10)
