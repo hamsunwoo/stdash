@@ -6,8 +6,6 @@ import os
 
 t1, t2 = st.tabs(['Requests by Date and Time', '불균형요청수'])
 
-#st.title('Requests by Date and Time')
-
 def load_data():
     DB = os.getenv('DB')
     DB_PORT = os.getenv('DB_PORT')
@@ -22,6 +20,7 @@ df = pd.DataFrame(data)
 # TODO
 # request_time, prediction_time 이용해 '%Y-%m-%d %H' 형식
 with t1:
+    st.title('Requests by Date and Time')
     df['request_time'] = pd.to_datetime(df['request_time'])
     df['prediction_time'] = pd.to_datetime(df['prediction_time'])
 
@@ -45,6 +44,7 @@ with t1:
 
 #불균형(누가 처리에 문제가 있는지 확인) VIEW 추가
 with t2:
+    st.title('Unbalanced requests count')
     plt.figure() #새로운 그래프를 그림
     df['request_day'] = df['request_time'].dt.strftime('%Y-%m-%d')
     df['request_h'] = df['request_time'].dt.hour
