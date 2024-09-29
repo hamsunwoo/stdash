@@ -4,7 +4,11 @@ import requests
 import streamlit as st
 import os
 
-t1, t2 = st.tabs(['Requests by Date and Time', '불균형요청수'])
+t1, t2, t3 = st.tabs([
+    'Requests by Date and Time',
+    '불균형요청수',
+    'streamlit chart'
+    ])
 
 def load_data():
     DB = os.getenv('DB')
@@ -39,7 +43,7 @@ with t1:
     plt.ylabel('Number of Requests')
     plt.xticks(rotation=45,fontsize=10)
     plt.tight_layout()
-
+    
     st.pyplot(plt)
 
 #불균형(누가 처리에 문제가 있는지 확인) VIEW 추가
@@ -76,3 +80,14 @@ with t2:
     plt.tight_layout()
 
     st.pyplot(plt)
+
+with t3:
+    import numpy as np
+    plt.figure()
+    chart_data = pd.DataFrame(
+            {
+            "Number of Requests": df1['request_hour'],
+            "request_time": df1['num'],
+        }
+    )
+    st.bar_chart(chart_data, x="Number of Requests", y="request_time")
